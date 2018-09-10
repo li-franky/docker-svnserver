@@ -8,7 +8,7 @@ LABEL name="SVN Server with Apache - Image Base CentOS" \
 COPY wandisco-svn.repo /etc/yum.repos.d/wandisco-svn.repo
 COPY initfile /opt/initfile
 
-RUN chmod +x /opt/initfile/init.sh
+RUN chmod +x /opt/initfile/init.sh && \
     yum install net-tools httpd php -y && \
     curl https://codeload.github.com/mfreiholz/iF.SVNAdmin/tar.gz/stable-1.6.2 >> svnadmin.tar.gz && \
     tar zxvf svnadmin.tar.gz && \
