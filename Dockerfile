@@ -16,6 +16,8 @@ RUN chmod +x /opt/initfile/init.sh && \
     rm -rf svnadmin.tar.gz iF.SVNAdmin-stable-1.6.2 && \
     yum --disablerepo="*" --enablerepo="WandiscoSVN" install subversion mod_dav_svn -y
 
+RUN sed -i '349i \nLimitXMLRequestBody 0\nLimitRequestBody 0' /etc/httpd/conf/httpd.conf
+
 COPY subversion.conf /etc/httpd/conf.d/subversion.conf
 COPY initfile/init.service /etc/init.d/init.service
 
