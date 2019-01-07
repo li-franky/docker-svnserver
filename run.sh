@@ -38,8 +38,7 @@ if [ ! -x "$dirpath" ]; then
   chown -R apache:apache /var/www/html/data/repositories
 fi
 
-
-systemctl restart httpd
+httpd -k start
 
 tail -f /dev/null
 
